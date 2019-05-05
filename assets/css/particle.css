@@ -1,0 +1,14 @@
+.btext{
+   color: #f9f3f4;
+   position: absolute;
+   text-align: center;
+   top: 30%;
+   width: 93%;
+}
+#particles-js
+{
+   background-attachment: fixed;
+   background-position: top right;
+   background-repeat: no-repeat;
+   background-size: 110% 100%;
+}
