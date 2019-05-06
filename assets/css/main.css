@@ -1818,14 +1818,6 @@ input, select, textarea {
 
 /* Button */
 
-	.button2{
-	width:35%;
-	left:10%;
-	}
-	.button3{
-	width:35%;
-	left:20%;
-	}
 
 	input[type="submit"],
 	input[type="reset"],
@@ -1984,6 +1976,16 @@ input, select, textarea {
 				.button:hover:active:after {
 					opacity: 0.1;
 				}
+
+
+	 .button2{
+	 width:35%;
+	 left:10%;
+	 }
+	 .button3{
+	 width:35%;
+	 left:20%;
+	 }
 
 /* Features */
 

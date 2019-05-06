@@ -23,7 +23,7 @@ CREATE TABLE participants (
 CREATE TABLE sponsors (
   sponsorID int(50) AUTO_INCREMENT PRIMARY KEY,
   name varchar(50),
-  budget varchar(50)
+  budget numeric(9,2)
 );
 
 CREATE TABLE teams (
@@ -58,6 +58,12 @@ CREATE TABLE about(
   info4 TEXT
 );
 
+CREATE TABLE dashboard(
+  address TEXT,
+  email TEXT,
+  phone varchar(50)
+);
+
 /* Creates default admin credentials*/
 INSERT INTO admin (name, username, password, phone) VALUES ('Byron','admin', 'csc350', '1234567');
 UPDATE admin SET password = MD5(password) WHERE adminID = 1;
@@ -78,3 +84,6 @@ VALUES ('Welcome to the LowFi hackathon, here you will find the tracks and works
         'AWS DeepLens',
         'In collaboration with the BMCC Programming Club the officers will host an intro to deep lens technology from Amazon, experience is not required.'
       );
+
+/* Creates default dashboard page data */
+INSERT INTO dashboard (address, email, phone) VALUES ('199 Chambers St #654 New York, NY 10007-0071  USA','hackToday@hms.org', '(347) 345-5437');

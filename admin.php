@@ -37,7 +37,7 @@ $link = mysqli_connect("localhost", "root", "", "hms") or die(mysql_error());
 
 		<?php
         if (isset($_SESSION['admin'])) {
-            echo <<<HTML
+echo <<<HTML
 			<div id = "wrapper">
 
 				<section id="intro" class="wrapper style1 fade-up">
@@ -52,18 +52,20 @@ $link = mysqli_connect("localhost", "root", "", "hms") or die(mysql_error());
 
 									<section>
 
-										<p> You have access to modify the following sections </p>
+									<p align="center"> Modify Data </p>
 									<button class="button2" onclick="document.getElementById('id01').style.display='block';">Welcome</button>
 									<button class = "button3" onclick="document.getElementById('id02').style.display='block';">About</button>
 									<br><br><br>
-									<button class = "button2" onclick="document.getElementById('id03').style.display='block';">Sponsors</button>
+									<button class = "button2 primary disabled" onclick="document.getElementById('id03').style.display='block';">Sponsors</button>
 									<button class = "button3" onclick="document.getElementById('id04').style.display='block';">User Dashboard</button>
 
 									<hr>
-
+									<p align="center"> Action Mode </p>
 									<button class = "button2" onclick="document.getElementById('id05').style.display='block';">New Sponsor</button>
 									<button class = "button3" onclick="document.getElementById('id06').style.display='block';">View Teams</button>
 
+									<hr>
+									<p align="center"> God-Mode </p>
 									<form name = "god" method="POST">
 									<button class = "button2" name = "delete" type = "submit">Delete All</button>
 									<button class = "button3" name = "reset" type = "submit">Reset Default</button>
@@ -76,42 +78,49 @@ $link = mysqli_connect("localhost", "root", "", "hms") or die(mysql_error());
 										<li>
 											<h3>Total Participants</h3>
 HTML;
-            $sql = "SELECT * FROM participants WHERE studentID=(SELECT MAX(studentID) FROM participants)";
-            $result = mysqli_query($link, $sql);
-            $rs = mysqli_fetch_array($result);
+            					$sql = "SELECT * FROM participants WHERE studentID=(SELECT MAX(studentID) FROM participants)";
+            					$result = mysqli_query($link, $sql);
+            					$rs = mysqli_fetch_array($result);
 
-            $total = $rs['studentID'] ?? '0';
-            echo "<p>". $total . "</p>";
-            echo<<<HTML
+            					$total = $rs['studentID'] ?? '0';
+            					echo "<p>". $total . "</p>";
+echo<<<HTML
 										</li>
 										<li>
 											<h3>Total Teams</h3>
 HTML;
-            $sql = "SELECT * FROM teams WHERE teamID=(SELECT MAX(teamID) FROM teams)";
-            $result = mysqli_query($link, $sql);
-            $rs = mysqli_fetch_array($result);
+            					$sql = "SELECT * FROM teams WHERE teamID=(SELECT MAX(teamID) FROM teams)";
+            					$result = mysqli_query($link, $sql);
+            					$rs = mysqli_fetch_array($result);
 
-            $total = $rs['teamID'] ?? '0';
-            echo "<p>". $total . "</p>";
-            echo<<<HTML
-										</li>
-										<li>
+            					$total = $rs['teamID'] ?? '0';
+            					echo "<p>". $total . "</p>";
+echo<<<HTML
+											</li>
+											<li>
 											<h3>Total Sponsors</h3>
 HTML;
-            $sql = "SELECT * FROM sponsors WHERE sponsorID=(SELECT MAX(sponsorID) FROM sponsors)";
-            $result = mysqli_query($link, $sql);
-            $rs = mysqli_fetch_array($result);
+            					$sql = "SELECT * FROM sponsors WHERE sponsorID=(SELECT MAX(sponsorID) FROM sponsors)";
+            					$result = mysqli_query($link, $sql);
+            					$rs = mysqli_fetch_array($result);
 
-            $total = $rs['sponsorID'] ?? '0';
-            echo "<p>". $total . "</p>";
-            echo<<<HTML
+            					$total = $rs['sponsorID'] ?? '0';
+            					echo "<p>". $total . "</p>";
+echo<<<HTML
 
-										</li>
-										<li>
+											</li>
+											<li>
 											<h3>Budget</h3>
+HTML;
+											$sql = "SELECT SUM(budget) AS total FROM sponsors";
+											$result = mysqli_query($link, $sql);
+											$rs = mysqli_fetch_array($result);
 
-										</li>
-										</ul>
+											$total = $rs['total'] ?? '0';
+            					echo "<p>$ ". $total . "</p>";
+echo<<<HTML
+											</li>
+											</ul>
 									</section>
 								</div>
 						</div>
@@ -210,6 +219,136 @@ HTML;
 
 						</div>
 
+						<div id="id04" class="modal">
+
+							<span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+								<section>
+
+									<form name = "dashboardUpdate" method="POST">
+
+											<div class="fields">
+
+											 <div class="field half">
+
+												<label style="margin-top:5%;" for="newAddress">Address</label>
+												<input type="text" name="newAddress" id="newAddress" placeholder="Enter" />
+											 </div>
+
+											 <div class="field half">
+												 <label style="margin-top:5%;" for="newEmail">Email</label>
+												 <input type="text" name="newEmail" id="newEmail" placeholder="Enter" />
+												</div>
+
+												<div class="field half">
+													<label style="margin-top:5%;" for="newPhone">Phone</label>
+													<input type="text" name="newPhone" id="newPhone" placeholder="Enter" />
+												 </div>
+
+												 <div class="field half">
+													 <input type="submit" name = "dashboardUpdate" style="left:40%;top:30%" value="Complete">
+													</div>
+
+											</div>
+
+									</form>
+
+							</section>
+
+						</div>
+
+						<div id="id05" class="modal">
+
+							<span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+								<section>
+
+									<form name = "newSponsor" method="POST">
+
+										<div class="fields">
+
+											 <div class="field half">
+
+												<label style="margin-top:5%;" for="name">Sponsor Name</label>
+												<input type="text" name="name" id="name" placeholder="Enter" />
+											 </div>
+
+											 <div class="field half">
+												 <label style="margin-top:5%;" for="amt">Money Amount</label>
+												 <input type="text" name="amt" id="amt" placeholder="Enter" />
+												</div>
+
+												 <div class="field half">
+													 <input type="submit" name = "newSponsor" style="left:80%;top:30%" value="Complete">
+													</div>
+
+											</div>
+
+									</form>
+
+							</section>
+
+						</div>
+
+						<div id="id06" class="modal large ">
+
+							<span onclick="document.getElementById('id06').style.display='none'" class="close large" title="Close Modal">&times;</span>
+
+								<section>
+HTML;
+									 $sql = "SELECT * FROM teams ORDER BY teamID ASC";
+									 if($result = mysqli_query($link, $sql)){
+										 if(mysqli_num_rows($result) > 0)
+										 {
+echo<<<HTML
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Team ID</th>
+													<th>Name</th>
+													<th>Path</th>
+												</tr>
+											</thead>
+											<tbody>
+HTML;
+										while($row = mysqli_fetch_array($result)) {
+
+echo<<<HTML
+
+												<tr>
+													<td>
+HTML;
+													echo  $row['teamID'];
+echo<<<HTML
+													</td>
+													<td>
+HTML;
+													echo $row['teamName'];
+echo<<<HTML
+													</td>
+													<td>
+HTML;
+													echo $row['category'];
+echo<<<HTML
+												 </td>
+												</tr>
+HTML;
+										}//while fetch array
+echo<<<HTML
+											</tbody>
+										</table>
+									</div>
+HTML;
+							} else { //if num rows
+								echo "There are not records of Teams";
+							}
+						}	//if result = query
+echo<<<HTML
+							</section>
+
+						</div>
+
 				</section>
 			</div>
 HTML;
@@ -270,7 +409,7 @@ HTML;
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
-
+<!-- SIGN IN Check -->
 <?php
 if (isset($_POST['signin'])) {
     $username = $_POST['username'] ?? '';
@@ -289,7 +428,7 @@ if (isset($_POST['signin'])) {
           }
       }
 ?>
-
+<!-- UPDATE SQL Welcome Page-->
 <?php
 
 if (isset($_POST['welcomeUpdate'])) {
@@ -304,7 +443,7 @@ if (isset($_POST['welcomeUpdate'])) {
     	}
 		}
 ?>
-
+<!-- UPDATE SQL About Page-->
 <?php
 
 if (isset($_POST['aboutUpdate'])) {
@@ -331,19 +470,49 @@ if (isset($_POST['aboutUpdate'])) {
     	}
 		}
 ?>
+<!-- UPDATE SQL User Dashboard Page-->
+<?php
+if (isset($_POST['dashboardUpdate'])) {
+    $address = $_POST["newAddress"] ?? '';
+    $email = $_POST["newEmail"] ?? '';
+    $phone = $_POST["newPhone"] ?? '';
 
+    $sql = "UPDATE dashboard SET address = COALESCE(NULLIF('$address',''),address), email = COALESCE(NULLIF('$email',''),email), phone = COALESCE(NULLIF('$phone',''),phone)";
+
+    if ($result = mysqli_query($link, $sql)) {
+        print '<script>alert("Dashboard Section Updated...");</script>';
+    	}
+		}
+
+?>
+<!-- ADD NEW SPONSOR to SQL-->
+<?php
+
+if (isset($_POST['newSponsor'])) {
+    $name = $_POST["name"] ?? '';
+    $money = $_POST["amt"] ?? '';
+
+    $sql = "INSERT INTO sponsors (name, budget) VALUES ('$name','$money')";
+
+    if ($result = mysqli_query($link, $sql)) {
+        print '<script>alert("Sponsor Added Updated...");</script>';
+				  echo "<meta http-equiv='refresh' content='0'>";
+    	}
+		}
+?>
+
+<!-- Reset Every Page Data-->
 <?php
 if (isset($_POST['reset'])) {
 
-	$sql = "SELECT * from welcome + SELECT * from about";
+	$sql = "SELECT * FROM welcome";
 	$result = mysqli_query($link, $sql);
 
 	if(mysqli_num_rows($result) == 0)
 	{
     $sql = "INSERT INTO welcome (title, subtitle, subtitle2) VALUES ('LowFi Hackathon','Borough of Manhattan Community College', 'September 20th, 2019');";
 		$sql .= "INSERT INTO about (description, title1, info1, title2, info2, title3, info3, title4, info4)
-		VALUES ('Welcome to the LowFi hackathon, here you will find the tracks and workshops we have ready for
-		        you!',
+		VALUES ('Welcome to the LowFi hackathon, here you will find the tracks and workshops we have ready for you!',
 		        'Path + Workshop: Alexa',
 		        'Start building for voice today by adding new capabilities to Alexa, connecting Alexa to devices, or integrating Alexa directly into your products.',
 		        'Path + Workshop: Wolfram',
@@ -353,9 +522,12 @@ if (isset($_POST['reset'])) {
 		        'AWS DeepLens',
 		        'In collaboration with the BMCC Programming Club the officers will host an intro to deep lens technology from Amazon, experience is not required.'
 		      )";
-	} else {
+					if (mysqli_multi_query($link,$sql)) {
+							print '<script>alert("Everything Resetted C...");</script>';
+						}
+	} else{
 
-		$sql = "UPDATE welcome SET title = 'LowFi Hackathon', subtitle = 'Borough of Manhattan Community College', subtitle2 = 'September 20th, 2019' ;";
+		$sql2 = "UPDATE welcome SET title = 'LowFi Hackathon', subtitle = 'Borough of Manhattan Community College', subtitle2 = 'September 20th, 2019'; ";
 
 		$sql .= "UPDATE about SET description = 'Welcome to the LowFi hackathon, here you will find the tracks and workshops we have ready for you!';";
 
@@ -366,14 +538,15 @@ if (isset($_POST['reset'])) {
 		$sql .= "UPDATE about SET title3 = 'Path: Quantumm', info3 = 'Quantum computers have the potential to solve certain problems dramatically faster than conventional computers, with applications in areas such as machine learning, finance, drug discovery and cryptography.';";
 
 		$sql .= "UPDATE about SET title4 = 'AWS DeepLens', info4 = 'In collaboration with the BMCC Programming Club the officers will host an intro to deep lens technology from Amazon, experience is not required.'";
+		if (mysqli_multi_query($link,$sql2)) {
+				print '<script>alert("Everything Resetted...");</script>';
+			}
 	}
 
-	if (mysqli_multi_query($link,$sql)) {
-			print '<script>alert("Everything Resetted...");</script>';
-		}
+
 }
 ?>
-
+<!-- Delete Every Page Data-->
 <?php
 if (isset($_POST['delete'])) {
 	$sql = "DELETE FROM welcome;"; //2 semicolon

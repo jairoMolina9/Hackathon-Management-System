@@ -9,9 +9,11 @@ Allows users to update/view their data into database
 <?php
 session_start();
 
-if (!(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] != '')) {
-    header("Location: index.php");
-}
+if (isset($_SESSION['admin'])) {
+    header("Location: admin.php");
+} else if ((!isset($_SESSION['logged_in']))) {
+    header("Location: login.php");
+  }
 
 $link = mysqli_connect("localhost", "root", "", "hms") or die(mysql_error());
 
@@ -26,6 +28,15 @@ $teamID = $rs['teamID'] ?? 'Update Information';
 $schoolName = $rs['school'] ?? 'Update Information';
 $shirtSize = $rs['shirtSize'] ?? 'Update Information';
 $foodType = $rs['foodType'] ?? 'Update Information';
+
+$sql = "SELECT * FROM dashboard";
+
+$result = mysqli_query($link, $sql);
+$rs = mysqli_fetch_array($result);
+
+$address = $rs['address'];
+$email = $rs['email'];
+$phone = $rs['phone'];
 
 ?>
 
@@ -124,17 +135,15 @@ $foodType = $rs['foodType'] ?? 'Update Information';
                   <ul class="contact">
                      <li>
                        <h3>Address</h3>
-                        <span>199 Chambers St #654<br />
-                           New York, NY 10007-0071<br />
-                           USA</span>
+                        <span> <?php echo $address; ?> </span>
                         </li>
                         <li>
                            <h3>Email</h3>
-                           <a href="#">hackToday@hms.org</a>
+                           <a href="#"> <?php echo $email; ?> </a>
                         </li>
                         <li>
                            <h3>Phone</h3>
-                           <span>(347) 345-5437</span>
+                           <span> <?php echo $phone; ?> </span>
                         </li>
                         <li>
                            <h3>Social</h3>
@@ -308,11 +317,20 @@ $foodType = $rs['foodType'] ?? 'Update Information';
           if ($result = mysqli_query($link, $sql)) {
               if (!mysqli_num_rows($result)) {
 
-                  $sql = ("INSERT INTO teams (teamName, category) VALUES ('$teamName', '$path')");
+                  $sql = ("INSERT INTO teams (teamName, category) VALUES ('$teamName', '$path');");
+                  if(mysqli_query($link,$sql)) {
+                    $sql = "SELECT * FROM teams WHERE teamID=(SELECT MAX(teamID) FROM teams)";
+                    $result = mysqli_query($link, $sql);
+                    $rs = mysqli_fetch_array($result);
 
-                  if (mysqli_query($link, $sql)) {
-                     echo "<meta http-equiv='refresh' content='0'>";
+                    $teamID = $rs['teamID'] ?? '0';
+                    $sql = "UPDATE participants SET teamID = '$teamID' WHERE studentID = '$id'";
+
+                    if (mysqli_query($link,$sql)) {
+                       echo "<meta http-equiv='refresh' content='0'>";
+                    }
                   }
+
               } else {
                   Print '<script>alert("Team already exists...");</script>';
               }
