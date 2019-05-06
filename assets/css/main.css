@@ -1818,6 +1818,15 @@ input, select, textarea {
 
 /* Button */
 
+	.button2{
+	width:35%;
+	left:10%;
+	}
+	.button3{
+	width:35%;
+	left:20%;
+	}
+
 	input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
@@ -2489,6 +2498,12 @@ width: 55%; /* Full width */
 height: auto + 12px; /* Full height */
 background-color: rgba(49,36,80,0.98); /* Black w/ opacity */
 }
+
+.modal.large{
+	height: 600px; /* Full height */
+	overflow: scroll;
+}
+
 /* The Close Button (x) */
 .close {
 position: absolute;
@@ -2497,6 +2512,15 @@ bottom: 87%;
 color: #000;
 font-size: 35px;
 font-weight: bold;
+}
+
+.close.large{
+	position: absolute;
+	right: 0;
+	bottom: 92%;
+	color: #000;
+	font-size: 35px;
+	font-weight: bold;
 }
 
 .close2 {

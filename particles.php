@@ -17,15 +17,15 @@ on the session status
 
    <body>
 
-  <section id="intro" class="wrapper style1 fullscreen fade-up">
+
          <div class="inner">
             <div id ="particles-js"></div>
             <div class ="btext">
-            <h1>LowFi Hackathon</h1>
-            <p>Borough of Manhattan Community College</p>
-            <p>September 20th, 2019</p>
+            <h1> <?php echo $title; ?> </h1>
+            <p> <?php echo $subt; ?> </p>
+            <p> <?php echo $subt2; ?> </p>
             <?php
-            if ((isset($_SESSION['logged_in']) && $_SESSION['logged_in'] != '')) {
+            if ((isset($_SESSION['logged_in']) && $_SESSION['logged_in'] != '') || (isset($_SESSION['admin']))) {
                echo '<a href="logout.php" class="button">Logout</a>';
             } else {
                echo '<a href="register.php" class="button">Register</a>';
@@ -35,7 +35,6 @@ on the session status
 
          </div>
          </div>
-       </section>
 
 
       <script src="assets/js/particles.js"></script>
@@ -47,7 +46,6 @@ on the session status
       <script src="assets/js/jquery.scrolly.min.js"></script>
       <script src="assets/js/util.js"></script>
       <script src="assets/js/main.js"></script>
-
    </body>
 
 </html>

@@ -8,7 +8,6 @@ Allows users to update/view their data into database
 -->
 <?php
 session_start();
-date_default_timezone_set("America/New_York");
 
 if (!(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] != '')) {
     header("Location: index.php");
@@ -68,7 +67,7 @@ $foodType = $rs['foodType'] ?? 'Update Information';
 					<div class="inner">
 
                      <?php
-                    echo "<h2>Welcome back, ". $_SESSION['username'] ."</h2>";
+                    echo "<h2>Welcome, ". $_SESSION['username'] ."</h2>";
                     ?>
 							<p>This is your Dashboard, in here you will be able to modify any information related to the Hackathon please understand that the option to commit any UPDATE will only be available until the day before the Hackathon.<br>We are eager to see you! </p>
 
@@ -263,14 +262,15 @@ $foodType = $rs['foodType'] ?? 'Update Information';
 
             </section>
          </div>
-		<!-- Footer -->
-			<footer id="footer" class="wrapper style1-alt">
-				<div class="inner">
-					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="https://www.linkedin.com/in/jairo-molina-a0574714b/">The Dream Team</a></li>
-					</ul>
-				</div>
-			</footer>
+
+         <!-- Footer -->
+   			<footer id="footer" class="wrapper style1-alt">
+   				<div class="inner">
+   					<ul class="menu">
+   						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="admin.php">ADMIN DASHBOARD</a></li>
+   					</ul>
+   				</div>
+   			</footer>
 
 
 
@@ -288,15 +288,12 @@ $foodType = $rs['foodType'] ?? 'Update Information';
 
 <?php
 
-     $date = date("Y/m/d");
-     $time = date("h:i:s a");
-
-
      if( isset($_POST['update_info']) ) {
         $teamID = $_POST['inputTeam'] ?? '';
         $schoolName = $_POST['schoolName'] ?? '';
         $shirtSize = $_POST['shirtSize'] ?? '';
         $foodType = $_POST['foodType'] ?? '';
+
         $sql = "UPDATE participants SET  teamID = COALESCE(NULLIF('$teamID',''), teamID), school = COALESCE(NULLIF('$schoolName',''),school), shirtSize = COALESCE(NULLIF('$shirtSize',''), shirtSize), foodType =COALESCE(NULLIF('$foodType',''), foodType) WHERE studentID='$id'";
 
         $result = mysqli_query($link, $sql);
@@ -312,7 +309,6 @@ $foodType = $rs['foodType'] ?? 'Update Information';
               if (!mysqli_num_rows($result)) {
 
                   $sql = ("INSERT INTO teams (teamName, category) VALUES ('$teamName', '$path')");
-
 
                   if (mysqli_query($link, $sql)) {
                      echo "<meta http-equiv='refresh' content='0'>";
