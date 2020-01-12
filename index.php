@@ -1,10 +1,11 @@
 <!--
 index.php
 team 1 (Laura, Boubojorn, Qinquan, Jairo)
-05/04/2019
+May 6th, 2019
 
 This file serves as the homepage of the Hackathon
-Here users can view Home, Schedule and Sponsors
+Here users can view About, Schedule and Sponsors
+They can register or login and go to their dashboard
 -->
 <?php
 session_start();
@@ -39,7 +40,7 @@ $info4 = $rs['info4'];
 ?>
 <html>
 	<head>
-		<title>Hackathon System</title>
+		<title>HMS</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css"
@@ -239,49 +240,49 @@ $info4 = $rs['info4'];
 					</div>
 				</section>
 
-					<!-- SECTION 3 -->
-						<section id="three" class="wrapper style2 spotlights">
+				<!-- SECTION 3 -->
+<section id="three" class="wrapper style2 spotlights">
 
-							<section>
-								<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="top center" /></a>
-								<div class="content">
-									<div class="inner">
-										<h2>Sed ipsum dolor</h2>
-										<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-										<ul class="actions">
-											<li><a href="generic.html" class="button">Learn more</a></li>
-										</ul>
-									</div>
-								</div>
-							</section>
+	<section>
+		<a href="#" class="image"><img src="images/facebook.png" width="450" height="500" alt="" data-position="top center" /></a>
+		<div class="content">
+			<div class="inner">
+				<h2>Facebook</h2>
+				<p>Facebook is a an American online social media and social networking service company, it allows users to create profiles, upload photos and video, send messages and keep in touch with friends and family.</p>
+				<ul class="actions">
+					<li><a href="https://www.facebook.com/" target="_blank" class="button">Learn more</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
 
-							<section>
-								<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
-								<div class="content">
-									<div class="inner">
-										<h2>Feugiat consequat</h2>
-										<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-										<ul class="actions">
-											<li><a href="generic.html" class="button">Learn more</a></li>
-										</ul>
-									</div>
-								</div>
-							</section>
+	<section>
+		<a href="#" class="image"><img src="images/aws.png" width="450" height="500" alt="" data-position="top center" /></a>
+		<div class="content">
+			<div class="inner">
+				<h2>AWS</h2>
+				<p>Amazon Web Services(AWS) is a subsidiary of Amazon, which provides on-demand cloud computing platforms to individuals, companies and governments, on a metered pay-as-you-go basis.</p>
+				<ul class="actions">
+					<li><a href="https://aws.amazon.com/" target="_blank" class="button">Learn more</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
 
-							<section>
-								<a href="#" class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%" /></a>
-								<div class="content">
-									<div class="inner">
-										<h2>Ultricies aliquam</h2>
-										<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-										<ul class="actions">
-											<li><a href="generic.html" class="button">Learn more</a></li>
-										</ul>
-									</div>
-								</div>
-							</section>
+	<section>
+		<a href="#" class="image"><img src="images/wolfram.png" width="450" height="500" alt="" data-position="25% 25%" /></a>
+		<div class="content">
+			<div class="inner">
+				<h2>Wolfram</h2>
+				<p>Wolfram|Alpha is a computational knowledge engine or answer engine developed by Wolfram Alpha LLC, a subsidiary of Wolfram Research.</p>
+				<ul class="actions">
+					<li><a href="http://www.wolfram.com/"  target="_blank" class="button">Learn more</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
 
-						</section>
+</section>
 
 
 

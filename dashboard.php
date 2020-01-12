@@ -1,7 +1,7 @@
 <!--
 dashboard.php
 team 1 (Laura, Boubojorn, Qinquan, Jairo)
-05/04/2019
+May 6th, 2019
 
 This file serves as the dashboard for participants
 Allows users to update/view their data into database
@@ -43,7 +43,7 @@ $phone = $rs['phone'];
 <html>
 
 	<head>
-		<title>Hackathon System</title>
+		<title>HMS</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css"

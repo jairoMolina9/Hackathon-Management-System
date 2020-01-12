@@ -1,9 +1,10 @@
 <!--
-lgoin.php
+login.php
 team 1 (Laura, Boubojorn, Qinquan, Jairo)
-05/04/2019
+May 6th, 2019
 
 This file serves as the login for users already registered
+or to access the admin dashboard
 -->
 <?php
 session_start();
@@ -22,7 +23,7 @@ if ((isset($_SESSION['logged_in']) && $_SESSION['logged_in'] != '')) {
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel = "stylesheet" href="assets/css/register.css">
-    <title>HMS Register!</title>
+    <title>HMS Login!</title>
   </head>
   <body>
     <div class="container">

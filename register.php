@@ -1,3 +1,10 @@
+<!--
+register.php
+team 1 (Laura, Boubojorn, Qinquan, Jairo)
+May 6th, 2019
+
+This file serves as the register page for new users
+-->
 <?php
 session_start();
 date_default_timezone_set("America/New_York");

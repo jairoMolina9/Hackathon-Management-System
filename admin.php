@@ -1,10 +1,10 @@
 <!--
-dashboard.php
+admin.php
 team 1 (Laura, Boubojorn, Qinquan, Jairo)
-05/04/2019
+May 6th, 2019
 
-This file serves as the dashboard for participants
-Allows users to update/view their data into database
+This file serves as the admin dashboard
+Allows admin to manage site and view data
 -->
 <?php
 session_start();
@@ -16,7 +16,7 @@ $link = mysqli_connect("localhost", "root", "", "hms") or die(mysql_error());
 <html>
 
 	<head>
-		<title>Hackathon System</title>
+		<title>HMS ADMIN</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css"

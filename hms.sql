@@ -1,8 +1,10 @@
 /*
 hms.sql
-information
-information
+team 1 (Laura, Boubojorn, Qinquan, Jairo)
+May 6th, 2019
+
 Database containing the user's credentials
+and default data
 */
 
 CREATE DATABASE hms COLLATE latin1_general_cs;

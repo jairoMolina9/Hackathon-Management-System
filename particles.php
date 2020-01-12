@@ -1,7 +1,7 @@
 <!--
 particles.php
 team 1 (Laura, Boubojorn, Qinquan, Jairo)
-05/04/2019
+May 6th, 2019
 
 This file serves as the cover page for the main page
 Dynamically offers Register, Login and Logout button depending
